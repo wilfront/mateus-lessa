@@ -40,9 +40,7 @@ body {
 }
 
 /* Cor de fundo global para evitar faixas brancas ao final das páginas */
-html, body {
-  background-color: #0e0f1a;
-}
+/* background-color global removido conforme solicitado */
 
 /* ===================
    HOME PAGE
@@ -50,7 +48,8 @@ html, body {
 .home {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - var(--footer-height));
+  /* garantir que o fundo da home se estenda além da viewport até o footer */
+  min-height: calc(100vh + var(--footer-height));
   overflow: hidden;
   color: white;
   display: flex;
