@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///home/linux/Downloads/mateus-lessa-main/src/app/loading.jsx"],"sourcesContent":["export default function Loading() {\n  return (\n    <div className=\"fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-r from-blue-900 to-indigo-950 text-white z-50\">\n      <div className=\"w-16 h-16 border-4 border-gray-300 border-t-yellow-400 rounded-full animate-spin\"></div>\n      <p className=\"mt-4 text-lg animate-pulse\">Carregando...</p>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,8OAAC;QAAI,WAAU;;0BACb,8OAAC;gBAAI,WAAU;;;;;;0BACf,8OAAC;gBAAE,WAAU;0BAA6B;;;;;;;;;;;;AAGhD","debugId":null}}]
-}
