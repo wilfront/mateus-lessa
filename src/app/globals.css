@@ -51,8 +51,8 @@ html, body {
 .home {
   position: relative;
   width: 100%;
-  /* garantir que o fundo da home se estenda além da viewport até o footer */
-  min-height: calc(100vh + var(--footer-height));
+  /* garantir que o conteúdo da home use toda a viewport menos a altura do footer */
+  min-height: calc(100vh - var(--footer-height));
   overflow: hidden;
   color: white;
   display: flex;
@@ -96,7 +96,7 @@ html, body {
   z-index: 10;
   max-width: 90%;
   padding: 0 1.5rem;
-  top: 45%;
+  top: 30%;
 }
 
 /* ===================
@@ -253,8 +253,8 @@ html, body {
   .fotos-page,
   .videos-page,
   .contato {
-    min-height: calc(100vh + var(--footer-height));
-    padding-bottom: calc(var(--footer-height) / 2);
+    min-height: calc(100vh - var(--footer-height));
+    padding-bottom: calc(var(--footer-height) / 8);
     background-position: center bottom !important;
   }
 }
@@ -270,8 +270,8 @@ html, body {
   .fotos-page,
   .videos-page,
   .contato {
-    min-height: calc(100vh + var(--footer-height));
-    padding-bottom: calc(var(--footer-height) / 2);
+    min-height: calc(100vh - var(--footer-height));
+    padding-bottom: calc(var(--footer-height) / 8);
     background-position: center bottom !important;
   }
 }
