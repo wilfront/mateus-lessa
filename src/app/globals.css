@@ -239,3 +239,22 @@ html, body {
     padding: 0.9rem 1.8rem;
   }
 }
+
+/* Ensure pages extend to the footer on small screens */
+@media (max-width: 700px) {
+  :root {
+    --footer-height: 120px; /* slightly larger footer space on small screens */
+  }
+
+  /* Make sure the main page containers are tall enough and backgrounds align to bottom */
+  .home,
+  .agenda-page,
+  .biografia-page,
+  .fotos-page,
+  .videos-page,
+  .contato {
+    min-height: calc(100vh + var(--footer-height));
+    padding-bottom: calc(var(--footer-height) / 2);
+    background-position: center bottom !important;
+  }
+}
