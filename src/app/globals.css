@@ -44,7 +44,8 @@ body {
 .home {
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 80px); /* evita que conteúdo da home fique atrás do footer fixo */
+  /* Expandir fundo para que ao rolar até o footer o background continue visível */
+  min-height: calc(100vh + 80px);
   overflow: hidden;
   color: white;
   display: flex;
@@ -88,7 +89,7 @@ body {
   z-index: 10;
   max-width: 90%;
   padding: 0 1.5rem;
-  top: 30%;
+  top: 45%;
 }
 
 /* ===================
