@@ -1,0 +1,88 @@
+/* [project]/src/components/Footer/Footer.css [app-client] (css) */
+.footer {
+  text-align: center;
+  color: #f1f1f1;
+  z-index: 10000;
+  pointer-events: auto;
+  background: linear-gradient(to right, #0e0f1a, #16182e);
+  border-top: 1px solid rgba(255, 255, 255, .1);
+  padding: 20px;
+  font-size: .95rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footer-container {
+  z-index: 10001;
+  pointer-events: auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+
+.footer-text {
+  color: #ccc;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color .3s;
+}
+
+.footer-text:hover {
+  color: #c6ff00;
+}
+
+.footer a {
+  z-index: 10002;
+  cursor: pointer;
+  pointer-events: auto;
+  position: relative;
+}
+
+.footer-links {
+  z-index: 1001;
+  flex-wrap: wrap;
+  gap: 20px;
+  display: flex;
+  position: relative;
+}
+
+.footer-links a {
+  color: #bbb;
+  cursor: pointer;
+  z-index: 10002;
+  pointer-events: auto;
+  font-size: 1.2rem;
+  text-decoration: none;
+  transition: color .3s;
+  position: relative;
+}
+
+.footer-links a:hover {
+  color: #c6ff00;
+}
+
+.footer-divider {
+  background-color: rgba(255, 255, 255, .1);
+  width: 60%;
+  height: 1px;
+  margin: 10px 0;
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 20px 10px;
+    font-size: .85rem;
+  }
+
+  .footer-links {
+    gap: 10px;
+  }
+}
+
+/*# sourceMappingURL=src_components_Footer_Footer_css_bad6b30c._.single.css.map*/
