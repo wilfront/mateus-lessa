@@ -76,6 +76,12 @@ body {
   z-index: 2;
 }
 
+/* Forçar overlay a não interceptar cliques em casos de CSS compilado sobrepondo regras */
+.overlay {
+  z-index: 0 !important;
+  pointer-events: none !important;
+}
+
 /* Conteúdo centralizado */
 .home-content {
   position: relative;
