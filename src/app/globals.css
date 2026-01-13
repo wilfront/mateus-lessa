@@ -108,7 +108,8 @@ body {
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: var(--border-radius);
   cursor: pointer;
-  z-index: 2000;
+  z-index: 11000;
+  pointer-events: auto;
   transition: var(--transition-smooth);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
