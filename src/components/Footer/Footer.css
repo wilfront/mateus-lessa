@@ -7,7 +7,7 @@
   right: 0;
   bottom: 0;
   width: 100vw;
-  min-height: 60px;
+  min-height: var(--footer-height);
   background: rgba(18, 20, 34, 0.98);
   box-shadow: 0 -2px 16px 0 rgba(0,0,0,0.12);
   border-top: 1.5px solid #23243a;
