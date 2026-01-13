@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+/* =================== 
+   VARIÁVEIS CSS 
+   =================== */
+:root {
+  --primary-color: #c6ff00;
+  --primary-dark: #b2f000;
+  --text-light: #f0f0f0;
+  --text-gray: #ddd;
+  --overlay-dark: rgba(0, 0, 0, 0.5);
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --shadow-soft: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.2);
+  --shadow-strong: 0 12px 32px rgba(0, 0, 0, 0.3);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --border-radius: 12px;
+}
+
+/* Reset básico */
+* {
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===================
+   HOME PAGE
+   =================== */
+.home {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Vídeo de fundo */
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2500;
+  pointer-events: none;
+}
+
+/* Camada escura sobre o vídeo */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 2600;
+}
+
+/* Conteúdo centralizado */
+.home-content {
+  position: relative;
+  z-index: 2700;
+  max-width: 90%;
+  padding: 0 1.5rem;
+  top: 30%;
+}
+
+/* ===================
+   BOTÕES HOME
+   =================== */
+.btn-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.btn-agenda,
+.btn-video {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 1.8rem;
+  padding: 1.4rem 3.2rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-medium);
+  overflow: hidden;
+  letter-spacing: 0.5px;
+}
+
+.btn-agenda::before,
+.btn-video::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.btn-agenda:hover::before,
+.btn-video:hover::before {
+  left: 100%;
+}
+
+/* Hover para ambos */
+.btn-agenda:hover,
+.btn-video:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-strong);
+}
+
+.btn-agenda:active,
+.btn-video:active {
+  transform: translateY(-1px);
+}
+
+/* ===================
+   RESPONSIVIDADE
+   =================== */
+
+/* Tablets grandes */
+@media (max-width: 1200px) {
+  .home-content {
+    max-width: 85%;
+  }
+  
+  .btn-agenda,
+  .btn-video {
+    font-size: 1.7rem;
+    padding: 1.3rem 2.8rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .home-content {
+    max-width: 90%;
+  }
+  
+  .btn-agenda,
+  .btn-video {
+    font-size: 1.6rem;
+    padding: 1.2rem 2.4rem;
+  }
+}
+
+/* Tablets pequenos */
+@media (max-width: 768px) {
+  .btn-group {
+    gap: 1.5rem;
+  }
+
+  .btn-agenda,
+  .btn-video {
+    font-size: 1.5rem;
+    padding: 1.1rem 2rem;
+  }
+}
+
+/* Celulares grandes */
+@media (max-width: 600px) {
+  .home-content {
+    top: 25%;
+  }
+  
+  .btn-group {
+    gap: 1.2rem;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-agenda,
+  .btn-video {
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    max-width: 280px;
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+  .btn-group {
+    gap: 1rem;
+  }
+
+  .btn-agenda,
+  .btn-video {
+    font-size: 1.3rem;
+    padding: 0.9rem 1.8rem;
+  }
+}

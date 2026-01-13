@@ -1,0 +1,61 @@
+.dashboard-fotos {
+  background: rgba(16, 18, 41, 0.85);
+  padding: 2rem;
+  border-radius: 10px;
+  color: white;
+  max-width: 700px;
+  margin: 2rem auto;
+}
+
+.dashboard-fotos h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.upload-container {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.upload-container input[type="file"] {
+  flex: 1;
+}
+
+.upload-container button {
+  padding: 0.5rem 1rem;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.fotos-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.foto-item {
+  position: relative;
+}
+
+.foto-item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgba(255,0,0,0.7);
+  border: none;
+  color: white;
+  padding: 3px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
