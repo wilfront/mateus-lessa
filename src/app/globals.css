@@ -17,7 +17,7 @@
   --shadow-strong: 0 12px 32px rgba(0, 0, 0, 0.3);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --border-radius: 12px;
-  --home-content-top: 30vh; /* default vertical offset for home content */
+  --home-content-top: 20vh;
 }
 
 /* Reset básico */
@@ -171,7 +171,7 @@ body {
 
 /* Tablets grandes */
 @media (max-width: 1200px) {
-  :root { --home-content-top: 32vh; }
+  :root { --home-content-top: 32vh; --page-content-top: var(--home-content-top); }
   .home-content {
     max-width: 85%;
   }
@@ -198,7 +198,7 @@ body {
 
 /* Tablets pequenos */
 @media (max-width: 768px) {
-  :root { --home-content-top: 36vh; }
+  :root { --home-content-top: 36vh; --page-content-top: var(--home-content-top); }
   .btn-group {
     gap: 1.5rem;
   }
@@ -212,11 +212,12 @@ body {
 
 /* Celulares grandes */
 @media (max-width: 600px) {
-  :root { --home-content-top: 40vh; }
+  :root { --home-content-top: 40vh; --page-content-top: var(--home-content-top); }
   .home-content {
     top: var(--home-content-top);
   }
 
+  .btn-group {
     gap: 1.2rem;
     flex-direction: column;
     width: 100%;
@@ -233,7 +234,7 @@ body {
 
 /* Celulares pequenos */
 @media (max-width: 480px) {
-  :root { --home-content-top: 45vh; }
+  :root { --home-content-top: 45vh; --page-content-top: var(--home-content-top); }
   .btn-group {
     gap: 1rem;
   }
@@ -269,9 +270,10 @@ body {
     padding-top: 140px; /* increase top padding so content sits lower like home */
   }
 
-  /* Ensure home content remains centered lower */
+  
+  :root { --home-content-top: 25vh; }
   .home-content {
-    top: 35%;
+    top: var(--home-content-top);
   }
 }
 
@@ -287,4 +289,5 @@ body {
     padding-bottom: calc(var(--footer-height) / 8);
     background-position: center bottom !important;
   }
+  :root { --home-content-top: 20vh; }
 }
