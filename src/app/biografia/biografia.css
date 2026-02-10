@@ -11,7 +11,7 @@
   background-attachment: scroll;
   width: 100%;
   min-height: calc(100vh - var(--footer-height));
-  padding: var(--page-content-top) 80px 80px;
+  padding: var(--page-content-top) 80px calc(var(--footer-height) + 20px) 80px;
   color: #f0f0f0;
   background-color: #0e0f1a;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
@@ -84,7 +84,7 @@
 /* Responsivo */
 @media (max-width: 1400px) {
   .biografia-page {
-    padding: 100px 60px 60px;
+    padding: 100px 60px calc(var(--footer-height) + 20px) 60px;
   }
 
   .biografia-page h1 {
@@ -94,7 +94,7 @@
 
 @media (max-width: 1024px) {
   .biografia-page {
-    padding: 100px 40px 60px;
+    padding: 100px 40px calc(var(--footer-height) + 20px) 40px;
   }
 
   .biografia-page h1 {
@@ -110,7 +110,7 @@
 
 @media (max-width: 768px) {
   .biografia-page {
-    padding: 90px 30px 50px;
+    padding: 90px 30px calc(var(--footer-height) + 20px) 30px;
   }
 
   .biografia-page h1 {
@@ -127,7 +127,7 @@
 
 @media (max-width: 604px) {
   .biografia-page {
-    padding: 80px 20px 40px;
+    padding: 80px 20px calc(var(--footer-height) + 20px) 20px;
     background-attachment: scroll;
   }
 
@@ -146,7 +146,7 @@
 
 @media (max-width: 400px) {
   .biografia-page {
-    padding: 70px 15px 35px;
+    padding: 70px 15px calc(var(--footer-height) + 20px) 15px;
   }
 
   .biografia-page h1 {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebaseConfig";
@@ -11,7 +11,7 @@ export default function FotosPage() {
   const [fotos, setFotos] = useState([]);
   const [pagina, setPagina] = useState(1);
   const porPagina = 8;
-  const [fotoAmpliada, setFotoAmpliada] = useState(null);
+  const [fotoIndiceAmpliado, setFotoIndiceAmpliado] = useState(null);
 
   useEffect(() => {
     const fotosQuery = query(collection(db, "fotos"), orderBy("createdAt", "desc"));
@@ -27,6 +27,35 @@ export default function FotosPage() {
 
     return () => unsubscribe();
   }, [pagina, porPagina]);
+
+  useEffect(() => {
+    if (fotoIndiceAmpliado !== null) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+
+    return () => {
+      document.body.classList.remove('modal-open');
+    };
+  }, [fotoIndiceAmpliado]);
+
+  const navegarFoto = useCallback((direcao) => {
+    if (fotoIndiceAmpliado === null) return;
+    const novoIndice = (fotoIndiceAmpliado + direcao + fotos.length) % fotos.length;
+    setFotoIndiceAmpliado(novoIndice);
+  }, [fotoIndiceAmpliado, fotos.length]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (fotoIndiceAmpliado === null) return;
+      if (e.key === 'ArrowLeft') navegarFoto(-1);
+      else if (e.key === 'ArrowRight') navegarFoto(1);
+      else if (e.key === 'Escape') setFotoIndiceAmpliado(null);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [fotoIndiceAmpliado, navegarFoto]);
 
   const fotosExibidas = fotos.slice(0, pagina * porPagina);
 
@@ -69,11 +98,11 @@ export default function FotosPage() {
             animate="show"
           >
             <AnimatePresence>
-              {fotosExibidas.map((foto) => (
+              {fotosExibidas.map((foto, index) => (
                 <motion.div
                   key={foto.id}
                   className="foto-item"
-                  onClick={() => setFotoAmpliada(foto.url)}
+                  onClick={() => setFotoIndiceAmpliado(fotos.findIndex(f => f.id === foto.id))}
                   variants={itemVariants}
                   initial="hidden"
                   animate="show"
@@ -108,23 +137,57 @@ export default function FotosPage() {
       )}
 
       <AnimatePresence>
-        {fotoAmpliada && (
+        {fotoIndiceAmpliado !== null && fotos[fotoIndiceAmpliado] && (
           <motion.div
             className="overlay"
-            onClick={() => setFotoAmpliada(null)}
+            onClick={() => setFotoIndiceAmpliado(null)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
+            <motion.button
+              type="button"
+              className="nav-btn nav-btn-prev"
+              onClick={(e) => { e.stopPropagation(); navegarFoto(-1); }}
+              onTap={(e) => { e.stopPropagation(); navegarFoto(-1); }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Foto anterior"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
+            </motion.button>
+
             <motion.img
-              src={fotoAmpliada}
+              src={fotos[fotoIndiceAmpliado].url}
               alt="Foto Ampliada"
               className="zoomed-foto"
-              initial={{ scale: 0.8 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.8 }}
+              onClick={(e) => e.stopPropagation()}
+              key={fotoIndiceAmpliado}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.3 }}
             />
+
+            <motion.button
+              type="button"
+              className="nav-btn nav-btn-next"
+              onClick={(e) => { e.stopPropagation(); navegarFoto(1); }}
+              onTap={(e) => { e.stopPropagation(); navegarFoto(1); }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              aria-label="Próxima foto"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </motion.button>
+
+            <div className="media-counter">
+              {fotoIndiceAmpliado + 1} / {fotos.length}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

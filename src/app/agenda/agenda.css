@@ -12,7 +12,7 @@
   background-attachment: scroll;
   width: 100%;
   min-height: calc(100vh - var(--footer-height));
-  padding: var(--page-content-top) 80px 80px;
+  padding: var(--page-content-top) 80px calc(var(--footer-height) + 20px) 80px;
   color: #f0f0f0;
   background-color: #0e0f1a;
   display: flex;
@@ -268,7 +268,7 @@
 /* Desktop grande */
 @media (max-width: 1400px) {
   .agenda-page {
-    padding: 100px 60px 60px;
+    padding: 100px 60px calc(var(--footer-height) + 20px) 60px;
   }
 
   .agenda-page h1 {
@@ -284,7 +284,7 @@
 /* Tablets grandes */
 @media (max-width: 1024px) {
   .agenda-page {
-    padding: 100px 40px 60px;
+    padding: 100px 40px calc(var(--footer-height) + 20px) 40px;
   }
 
   .agenda-page h1 {
@@ -328,7 +328,7 @@
 /* Tablets */
 @media (max-width: 768px) {
   .agenda-page {
-    padding: 90px 30px 50px;
+    padding: 90px 30px calc(var(--footer-height) + 20px) 30px;
   }
 
   .agenda-page h1 {
@@ -377,7 +377,7 @@
 /* Celulares */
 @media (max-width: 604px) {
   .agenda-page {
-    padding: 80px 20px 40px;
+    padding: 80px 20px calc(var(--footer-height) + 20px) 20px;
     background-attachment: scroll;
   }
 
@@ -451,7 +451,7 @@
 /* Celulares pequenos */
 @media (max-width: 400px) {
   .agenda-page {
-    padding: 70px 15px 35px;
+    padding: 70px 15px calc(var(--footer-height) + 20px) 15px;
   }
 
   .agenda-page h1 {

@@ -1,6 +1,6 @@
 .contato {
   min-height: calc(100vh - var(--footer-height));
-  padding: var(--page-content-top) 80px 80px;
+  padding: var(--page-content-top) 80px calc(var(--footer-height) + 20px) 80px;
   background: 
     linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), 
     url('../../../public/imagens/foto-coração.jpg');
@@ -107,7 +107,7 @@
 /* Responsividade */
 @media (max-width: 1400px) {
   .contato {
-    padding: 100px 60px 60px;
+    padding: 100px 60px calc(var(--footer-height) + 20px) 60px;
   }
 
   .contato h1 {
@@ -117,7 +117,7 @@
 
 @media (max-width: 1024px) {
   .contato {
-    padding: 100px 40px 60px;
+    padding: 100px 40px calc(var(--footer-height) + 20px) 40px;
   }
 
   .contato h1 {
@@ -132,7 +132,7 @@
 
 @media (max-width: 768px) {
   .contato {
-    padding: 90px 30px 50px;
+    padding: 90px 30px calc(var(--footer-height) + 20px) 30px;
   }
 
   .contato h1 {
@@ -160,7 +160,7 @@
 
 @media (max-width: 604px) {
   .contato {
-    padding: 80px 20px 40px;
+    padding: 80px 20px calc(var(--footer-height) + 20px) 20px;
     background-attachment: scroll;
   }
 
@@ -189,7 +189,7 @@
 
 @media (max-width: 400px) {
   .contato {
-    padding: 70px 15px 35px;
+    padding: 70px 15px calc(var(--footer-height) + 20px) 15px;
   }
 
   .contato h1 {

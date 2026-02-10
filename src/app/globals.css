@@ -6,6 +6,7 @@
 :root {
   --primary-color: #c6ff00;
   --footer-height: 100px;
+  --header-height: 70px;
   --primary-dark: #b2f000;
   --text-light: #f0f0f0;
   --text-gray: #ddd;
@@ -290,4 +291,9 @@ body {
     background-position: center bottom !important;
   }
   :root { --home-content-top: 20vh; }
+}
+
+/* Modal open class to prevent body scroll */
+.modal-open {
+  overflow: hidden;
 }

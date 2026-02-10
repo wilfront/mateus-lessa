@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap');
 
 .fotos-page {
-  padding: var(--page-content-top) 80px 80px;
+  padding: var(--page-content-top) 80px calc(var(--footer-height) + 20px) 80px;
   background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url('/imagens/foto10.jpg');
   background-size: cover;
   background-position: center;
@@ -78,27 +78,91 @@
 
 .overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.92);
   backdrop-filter: blur(10px);
-  z-index: 999;
-  padding: 20px;
+  z-index: 1200;
+  padding: calc(var(--header-height) + 15px) 15px calc(var(--footer-height) + 15px) 15px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .zoomed-foto {
-  display: block;
-  margin: auto;
-  max-width: 90%;
-  max-height: 85%;
-  border-radius: 12px;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
   box-shadow: 0 0 50px rgba(198, 255, 0, 0.3);
   cursor: pointer;
   transition: transform 0.3s ease;
   object-fit: contain;
+  pointer-events: auto;
+}
+
+/* Navigation buttons */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(198, 255, 0, 0.9);
+  color: #000;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1600;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+}
+
+.nav-btn:hover {
+  background: rgba(198, 255, 0, 1);
+  box-shadow: 0 6px 20px rgba(198, 255, 0, 0.5);
+}
+
+.nav-btn-prev {
+  left: 20px;
+}
+
+.nav-btn-next {
+  right: 20px;
+}
+
+.nav-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke-width: 3;
+  pointer-events: none;
+}
+
+/* Media counter */
+.media-counter {
+  position: absolute;
+  bottom: calc(var(--footer-height) + 30px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  z-index: 1600;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(198, 255, 0, 0.3);
+  pointer-events: none;
 }
 
 .ver-mais-container {
@@ -145,7 +209,7 @@
 /* Responsivo */
 @media (max-width: 1400px) {
   .fotos-page {
-    padding: 100px 60px 60px;
+    padding: 100px 60px calc(var(--footer-height) + 20px) 60px;
   }
 
   .fotos-page h1 {
@@ -160,7 +224,7 @@
 
 @media (max-width: 1024px) {
   .fotos-page {
-    padding: 100px 40px 60px;
+    padding: 100px 40px calc(var(--footer-height) + 20px) 40px;
   }
 
   .fotos-page h1 {
@@ -180,7 +244,7 @@
 
 @media (max-width: 768px) {
   .fotos-page {
-    padding: 90px 30px 50px;
+    padding: 90px 30px calc(var(--footer-height) + 20px) 30px;
   }
 
   .fotos-page h1 {
@@ -205,11 +269,30 @@
   .info-paginacao {
     font-size: 1.3rem;
   }
+
+  .nav-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .nav-btn-prev {
+    left: 15px;
+  }
+
+  .nav-btn-next {
+    right: 15px;
+  }
+
+  .media-counter {
+    bottom: calc(var(--footer-height) + 20px);
+    font-size: 1.3rem;
+    padding: 6px 16px;
+  }
 }
 
 @media (max-width: 604px) {
   .fotos-page {
-    padding: 80px 20px 40px;
+    padding: 80px 20px calc(var(--footer-height) + 20px) 20px;
     background-attachment: scroll;
   }
 
@@ -217,6 +300,30 @@
     font-size: 2.6rem;
     padding-left: 14px;
     border-left-width: 5px;
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .nav-btn-prev {
+    left: 10px;
+  }
+
+  .nav-btn-next {
+    right: 10px;
+  }
+
+  .nav-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .media-counter {
+    bottom: calc(var(--footer-height) + 15px);
+    font-size: 1.2rem;
+    padding: 5px 12px;
   }
 
   .fotos-grid {
@@ -248,7 +355,7 @@
 
 @media (max-width: 400px) {
   .fotos-page {
-    padding: 70px 15px 35px;
+    padding: 70px 15px calc(var(--footer-height) + 20px) 15px;
   }
 
   .fotos-page h1 {
