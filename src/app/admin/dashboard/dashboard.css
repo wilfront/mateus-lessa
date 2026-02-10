@@ -1,0 +1,149 @@
+/* Wrapper geral do dashboard */
+.dashboard-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 120px 120px;
+  background: linear-gradient(to right, #101229, #1c1c3c);
+  box-sizing: border-box;
+}
+
+/* Container central */
+.dashboard-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color: white;
+}
+
+/* Títulos principais */
+.dashboard-container h1 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.dashboard-container p {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Painéis */
+.agenda-panel, .media-panel {
+  background: rgba(16, 18, 41, 0.9);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Subtítulos */
+.agenda-panel h2, .media-panel h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Inputs e selects */
+input, select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #222;
+  color: white;
+  font-size: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Botões */
+button {
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: scale(1.03);
+}
+
+/* Lista de agenda */
+.agenda-panel ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.agenda-panel li {
+  background: rgba(255,255,255,0.05);
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Botão excluir dentro da lista */
+.agenda-panel li button {
+  background-color: #e74c3c;
+  margin: 0;
+  padding: 5px 10px;
+}
+
+.agenda-panel li button:hover {
+  background-color: #c0392b;
+}
+
+/* Grid de fotos e vídeos */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.media-grid img, .media-grid video {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid #333;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .dashboard-wrapper {
+    padding: 120px 10px;
+  }
+
+  .agenda-panel, .media-panel {
+    padding: 1.5rem;
+  }
+
+  .media-grid img, .media-grid video {
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .media-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px;
+  }
+
+  .media-grid img, .media-grid video {
+    height: 90px;
+  }
+}
